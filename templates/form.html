@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form - FineTech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📲 FineTech App Enrollment Prediction</h1>
+                <p class="subtitle">Enter user information to predict enrollment likelihood</p>
+                <a href="/" class="back-link">← Back to Home</a>
+            </div>
+        </header>
+
+        <main>
+            <form action="/predict" method="POST" class="prediction-form">
+
+                <!-- Section 1: User Profile -->
+                <section class="form-section">
+                    <h2>1. User Profile</h2>
+                    <div class="form-grid three-cols">
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="18" max="100" value="25" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dayofweek">Day of Week</label>
+                            <select id="dayofweek" name="dayofweek" required>
+                                <option value="0">Monday</option>
+                                <option value="1">Tuesday</option>
+                                <option value="2">Wednesday</option>
+                                <option value="3">Thursday</option>
+                                <option value="4">Friday</option>
+                                <option value="5">Saturday</option>
+                                <option value="6">Sunday</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hour">Hour of Day</label>
+                            <input type="number" id="hour" name="hour" min="0" max="23" value="12" required>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Financial Account Details -->
+                <section class="form-section">
+                    <h2>2. Financial Account Details</h2>
+                    <div class="form-grid four-cols">
+                        <div class="form-group">
+                            <label for="savings_count">Savings Count</label>
+                            <input type="number" id="savings_count" name="savings_count" min="0" max="50" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cm_count">CM Count</label>
+                            <input type="number" id="cm_count" name="cm_count" min="0" max="50" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cc_count">CC Count</label>
+                            <input type="number" id="cc_count" name="cc_count" min="0" max="50" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loans_count">Loans Count</label>
+                            <input type="number" id="loans_count" name="loans_count" min="0" max="50" value="0" required>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: App Interaction -->
+                <section class="form-section">
+                    <h2>3. App Interaction</h2>
+                    <div class="form-grid four-cols">
+                        <div class="form-group">
+                            <label for="numscreens">Total Screens Viewed</label>
+                            <input type="number" id="numscreens" name="numscreens" min="0" max="500" value="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="minigame">Played Minigame?</label>
+                            <select id="minigame" name="minigame" required>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="used_premium">Used Premium?</label>
+                            <select id="used_premium" name="used_premium" required>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="liked">Liked App?</label>
+                            <select id="liked" name="liked" required>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Advanced Screen Interaction -->
+                <section class="form-section">
+                    <details class="advanced-section">
+                        <summary>
+                            <h2>Advanced Screen Interaction (Optional)</h2>
+                        </summary>
+                        <p class="section-description">Toggle the screens the user visited:</p>
+                        <div class="checkbox-grid">
+                            {% for screen in binary_screens %}
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="{{ screen }}" name="{{ screen }}">
+                                <label for="{{ screen }}">{{ screen }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </details>
+                </section>
+
+                <div class="button-container">
+                    <button type="submit" class="submit-btn">Run Prediction</button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 FineTech. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

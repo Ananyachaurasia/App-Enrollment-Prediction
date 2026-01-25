@@ -1,0 +1,243 @@
+/* ============================================
+   LANDING PAGE STYLES
+   ============================================ */
+
+.landing-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    text-align: center;
+    color: #e5e7eb;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #9ca3af;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+    animation: fadeInUp 1.2s ease;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    animation: fadeInUp 1.4s ease;
+}
+
+.feature-card {
+    background: rgba(37, 45, 61, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    color: #3b82f6;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: #9ca3af;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin: 60px 0;
+    animation: fadeInUp 1.6s ease;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    padding: 20px 60px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5);
+}
+
+/* Info Section */
+.info-section {
+    background: rgba(37, 45, 61, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 50px 40px;
+    margin-top: 60px;
+    animation: fadeInUp 1.8s ease;
+}
+
+.info-section h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #3b82f6;
+    margin-bottom: 40px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.step-content h4 {
+    color: #e5e7eb;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.step-content p {
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: #8b5cf6;
+    transform: translateX(-5px);
+}
+
+/* Landing Footer */
+.landing-footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive - Landing Page */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-button {
+        padding: 16px 40px;
+        font-size: 1.1rem;
+    }
+
+    .info-section {
+        padding: 30px 20px;
+    }
+}

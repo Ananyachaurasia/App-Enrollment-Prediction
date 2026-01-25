@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results - FineTech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📲 FineTech App Enrollment Prediction</h1>
+                <p class="subtitle">Prediction Results</p>
+                <a href="/" class="back-link">← Back to Home</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="results-container">
+                {% if error %}
+                    <div class="result-card error-card">
+                        <div class="result-icon">⚠️</div>
+                        <h2>Error</h2>
+                        <p class="error-message">{{ error }}</p>
+                        <a href="/" class="back-btn">Go Back</a>
+                    </div>
+                {% else %}
+                    {% if result.enrolled == 1 %}
+                        <div class="result-card success-card">
+                            <div class="result-icon">✅</div>
+                            <h2>Likely to Enroll!</h2>
+                            <div class="probability-container">
+                                <div class="probability-label">Enrollment Probability</div>
+                                <div class="probability-value">{{ "%.2f"|format(result.probability * 100) }}%</div>
+                                <div class="probability-bar">
+                                    <div class="probability-fill success" style="width: {{ result.probability * 100 }}%"></div>
+                                </div>
+                            </div>
+                            <div class="result-description">
+                                <p>Based on the provided data, this user shows a high likelihood of enrolling in the FineTech app. Consider prioritizing outreach to maximize conversion.</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="result-card warning-card">
+                            <div class="result-icon">❌</div>
+                            <h2>Unlikely to Enroll</h2>
+                            <div class="probability-container">
+                                <div class="probability-label">Enrollment Probability</div>
+                                <div class="probability-value">{{ "%.2f"|format(result.probability * 100) }}%</div>
+                                <div class="probability-bar">
+                                    <div class="probability-fill warning" style="width: {{ result.probability * 100 }}%"></div>
+                                </div>
+                            </div>
+                            <div class="result-description">
+                                <p>Based on the provided data, this user shows a lower likelihood of enrolling. Consider targeted engagement strategies or additional incentives.</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">New Prediction</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 FineTech. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

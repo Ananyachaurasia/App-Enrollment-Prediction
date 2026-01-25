@@ -1,0 +1,485 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg: #0f1419;
+    --secondary-bg: #1a1f2e;
+    --card-bg: #252d3d;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --success-color: #10b981;
+    --success-bg: rgba(16, 185, 129, 0.1);
+    --warning-color: #ef4444;
+    --warning-bg: rgba(239, 68, 68, 0.1);
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --input-bg: #1f2937;
+    --input-border: #4b5563;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, rgba(15, 20, 25, 0.95) 0%, rgba(26, 31, 46, 0.95) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Landing Page Background */
+/* Change this section in your style.css */
+body.landing-page {
+    /* Change 0.92 to 0.4 or 0.5 for more visibility */
+    background: linear-gradient(
+        135deg,
+        rgba(15, 20, 25, 0.4) 0%,
+        rgba(26, 31, 46, 0.4) 100%
+    ), url('/static/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.1), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styles */
+header {
+    background: rgba(26, 31, 46, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+}
+
+.header-content {
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Main Content */
+main {
+    background: rgba(26, 31, 46, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.form-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Form Grid Layouts */
+.form-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.form-grid.three-cols {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.form-grid.four-cols {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Form Groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 16px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: var(--accent-color);
+}
+
+/* Advanced Section (Details/Summary) */
+.advanced-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0;
+}
+
+.advanced-section summary {
+    padding: 20px 25px;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.3s ease;
+}
+
+.advanced-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.advanced-section summary:hover {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.advanced-section summary h2 {
+    margin: 0;
+    display: inline;
+}
+
+.advanced-section summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    color: var(--accent-color);
+}
+
+.advanced-section[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.section-description {
+    padding: 0 25px 20px;
+    color: var(--text-secondary);
+}
+
+/* Checkbox Grid */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 0 25px 25px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: var(--accent-color);
+}
+
+.checkbox-group label {
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.submit-btn,
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+    color: white;
+    border: none;
+    padding: 16px 48px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.submit-btn:hover,
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.submit-btn:active,
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Results Page Styles */
+.results-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.result-card {
+    padding: 50px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 2px solid;
+}
+
+.result-card.success-card {
+    background: var(--success-bg);
+    border-color: var(--success-color);
+}
+
+.result-card.warning-card {
+    background: var(--warning-bg);
+    border-color: var(--warning-color);
+}
+
+.result-card.error-card {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--warning-color);
+}
+
+.result-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.result-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.result-card.success-card h2 {
+    color: var(--success-color);
+}
+
+.result-card.warning-card h2 {
+    color: var(--warning-color);
+}
+
+/* Probability Display */
+.probability-container {
+    margin: 30px 0;
+}
+
+.probability-label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.probability-value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.success-card .probability-value {
+    color: var(--success-color);
+}
+
+.warning-card .probability-value {
+    color: var(--warning-color);
+}
+
+.probability-bar {
+    width: 100%;
+    height: 30px;
+    background: var(--input-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.probability-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+    border-radius: 15px;
+}
+
+.probability-fill.success {
+    background: linear-gradient(90deg, var(--success-color), #34d399);
+}
+
+.probability-fill.warning {
+    background: linear-gradient(90deg, var(--warning-color), #f87171);
+}
+
+.result-description {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.result-description p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.error-message {
+    color: var(--warning-color);
+    font-size: 1.1rem;
+    margin: 20px 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-btn,
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    margin: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid;
+}
+
+.back-btn {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.back-btn:hover {
+    border-color: var(--accent-color);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .form-section {
+        padding: 15px;
+    }
+
+    .form-grid.three-cols,
+    .form-grid.four-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        padding: 30px 20px;
+    }
+
+    .result-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .probability-value {
+        font-size: 2.5rem;
+    }
+
+    .result-icon {
+        font-size: 3.5rem;
+    }
+}
