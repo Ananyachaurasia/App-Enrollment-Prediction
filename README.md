@@ -31,37 +31,7 @@
 |       enrolled       |         If the user actually enrolled in the paid membership (1) or not (0)         |
 |     enrolled_date    |              The data on which the user enrolled in the paid membership             |
 
-## Histograms
 
-<img src='README-Docs/histograms-uni.jpg' width = '800' height='600'>
-
-1. `dayofweek`: shows a nearly-even distribuition along all days.
-2. `hour`: a huge drop after 2:00 AM until 10:00 AM which is very logic considering the users are probably asleep.
-3. `age`: shows that most of users are in the range of 20-40 with sharp peaks at 30 and 40.
-4. `numscreens`: a left-tailed distribution with the majority being at 20-30 screen per user.
-5. `minigame`: shows that a high skew in the favour of not playing the mini game.
-6. `used_premium_feature`: shows that a high skew in the favour of not using the premium features.
-7. `liked`: shows that a high skew in the favour of not liking the app on the store.
-
-## Correlation with Target
-
-<img src='README-Docs/correaltion-target.jpg' width = '800' height='400'>
-
-1. `dayofweek`: as we saw in the histogram, the distribuition was quite even which caused the corrleation between it and the target to be very small.
-2. `hour`: the negative correlation means that at earlier hours the possibilty of getting enrolled is higher.
-3. `age`: the younger the user the higher possibility to get enrolled.
-4. `numscreens`: the more screens the user interact with the higher enrollement probability.
-5. `minigame`: the state of playing the mini game increase the possibility of enrollement.
-6. `used_premium_feature`: **Surprisingly**, using the premium feature decreases the possibility of enrollement.
-7. `liked`:  **Surprisingly**, liking the app decreases the enrollement rate, yet, it's a very small correlation.
-
-## Correaltion Matrix
-
-<img src='README-Docs/correaltion-matrix.png' width = '800' height='600'>
-
-1. No 2 features have a correlation between each other higher than 0.1 in either direction. 
-2. The strongest realtionship is between `minigame` and `used_premium_feature`.
-3. No need to eliminate any features as no strong linear correlations exist among them.
 
 ## Feature Engineering
 
@@ -70,8 +40,6 @@
 * In order to make a model that is valid in the future. We need to a set a time limit after which we can look if that customer enrolled or not. We will take that threshold by taking a reasonable time that involves the majority of the customers who enrolled in the membership.
 
 * To calculate the time taken for each customer to response, we will subtract the enrollement time from the first open time.
-
-<img src='README-Docs/response-time.png' width = '1000' height='500'>
 
 We will take the time threshold at 48 hours (2 days). After that, the customer will be considered unrolled as we will check the model's performance after 2 days of operating it.
 
