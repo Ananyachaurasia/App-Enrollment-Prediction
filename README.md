@@ -71,8 +71,6 @@ The dataset contains **50,000 user records** with **12 features**, including the
 
 ## Correlation Matrix
 
-<img src='correaltion-matrix.png' width='800' height='600'>
-
 ### Insights
 
 - No pair of features shows a correlation greater than **±0.1**.  
