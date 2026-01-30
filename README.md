@@ -20,20 +20,18 @@ The dataset contains **50,000 user records** with **12 features**, including the
 
 ### Dataset Features
 
-| Column Name            | Description |
-|------------------------|-------------|
-| **user**              | Unique user identifier |
-| **first_open**        | Timestamp of the user’s first app launch |
-| **dayofweek**         | Day index when the app was first opened |
-| **hour**              | Hour of the first app session |
-| **age**               | User age |
-| **screen_list**       | List of screens visited during app usage |
-| **numscreens**        | Total number of screens viewed |
-| **minigame**          | Whether the user played the mini game (1 = Yes, 0 = No) |
-| **liked**             | Whether the user liked the app on the store |
-| **used_premium_feature** | Whether premium features were accessed |
-| **enrolled**          | Target variable: enrolled in paid plan (1) or not (0) |
-| **enrolled_date**     | Date of subscription enrollment |
+- **user**: Unique user identifier  
+- **first_open**: Timestamp of the user’s first app launch  
+- **dayofweek**: Day index when the app was first opened  
+- **hour**: Hour of the first app session  
+- **age**: Age of the user  
+- **screen_list**: List of screens visited during app usage  
+- **numscreens**: Total number of screens viewed  
+- **minigame**: Whether the user played the mini game (1 = Yes, 0 = No)  
+- **liked**: Whether the user liked the app on the store  
+- **used_premium_feature**: Whether premium features were accessed  
+- **enrolled**: Target variable indicating subscription (1 = Enrolled, 0 = Not Enrolled)  
+- **enrolled_date**: Date when the user enrolled in the paid subscription  
 
 
 ---
