@@ -35,6 +35,7 @@ The dataset contains **50,000 user records** with **12 features**, including the
 | **enrolled**          | Target variable: enrolled in paid plan (1) or not (0) |
 | **enrolled_date**     | Date of subscription enrollment |
 
+
 ---
 
 ## Histograms
