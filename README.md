@@ -1,55 +1,101 @@
-# Directing Customers Through App Behavior Analysis
+Guiding Customers Through App Behavior Analysis
+Introduction
 
-## Introduction
+In today’s competitive market, many companies offer free features in their mobile applications for a limited period to encourage users to eventually purchase a premium subscription.
 
-* In today's market, a lot of companies provide free services in their mobile applications in order, usually for a limited time, in order to attract customers/clients to subscribe in their permium service which includes all features for unlimited time.
+To maximize conversions, businesses should focus their marketing efforts on users who have already tried the app but have not yet subscribed. Offering discounts to this group is more effective than targeting users who are already likely to enroll.
 
-* In order to attract the most possible number of these customers, they need to focus on targeting the customers who used the mobile application but didn't subscribe yet for the permium services in order to give them discounts and offers that may not that influential if offered to those who already have the intention to subscribe in all cases.
+In this project, we build a machine learning model that predicts which users are unlikely to subscribe to the paid plan, allowing companies to better allocate promotional resources.
 
-* We are going to build a model that predicts which users won't subscribe to the paid membership so that the greater marketing efforts can go into trying to convert them to paid users.
+Dataset
 
-## Data
+The dataset used in this project comes from a fintech company offering a paid mobile subscription that helps users manage and track their financial activities in one platform.
 
-* The [dataset](https://sds-platform-private.s3-us-east-2.amazonaws.com/uploads/P39-CS3-Data.zip) used is a fintech company that wants to provide its customers with a paid mobile app subscription that will allow them to track all of their finances in one place.
+The company provides a free version with limited functionality and wants to identify users who are less likely to upgrade, so special offers can be directed toward them instead of all customers.
 
-* To attract customers, the company releases a free version of their app with some of the main features unlocked. The company wants to identify which users will not likely to enroll in the paid product, so that additional offers can be given to them and not to everybody specially that there will be customers who are going to enroll anyway.
+The dataset contains 50,000 user records with 12 features, including the target variable representing enrollment status:
 
-* The dataset contains 50 thousand records (row) each has 12 columns including our target the enrollement status as following:
+Column Name	Description
+user	Unique user identifier
+first_open	Timestamp of the user’s first app launch
+dayofweek	Day index when the app was first opened
+hour	Hour of the first app session
+age	User age
+screen_list	List of screens visited during app usage
+numscreens	Total number of screens viewed
+minigame	Whether the user played the mini game (1 = Yes, 0 = No)
+liked	Whether the user liked the app on the store
+used_premium_feature	Whether premium features were accessed
+enrolled	Target variable: enrolled in paid plan (1) or not (0)
+enrolled_date	Date of subscription enrollment
+Histograms
+<img src='README-Docs/histograms-uni.jpg' width='800' height='600'>
 
-|        Column        |                                     Description                                     |
-|:--------------------:|:-----------------------------------------------------------------------------------:|
-|         user         |                                       User ID                                       |
-|      first_open      |              The time where the user opened the app for the first time              |
-|       dayofweek      |         The index of the day on which the app was opened for the first time         |
-|         hour         |               The hour at which the app was opened for the first time               |
-|          age         |                                 The age of the user                                 |
-|      screen_list     | A comma-separated string of all screens the user showed during the usage of the app |
-|      numscreens      |               The number of screens showed during the usage of the app              |
-|       minigame       |                   If the user played the mini game (1) or not (0)                   |
-|         liked        |                If the user liked the app on the store (1) or not (0)                |
-| used_premium_feature |                  If the user used a premium feature (1) or not (0)                  |
-|       enrolled       |         If the user actually enrolled in the paid membership (1) or not (0)         |
-|     enrolled_date    |              The data on which the user enrolled in the paid membership             |
+Key observations:
 
+dayofweek shows an almost uniform distribution across all days.
 
+hour drops significantly between 2 AM and 10 AM, which is expected since most users are inactive during sleeping hours.
 
-## Feature Engineering
+age indicates most users fall between 20–40 years, with noticeable peaks around 30 and 40.
 
-### Response Time
+numscreens is left-skewed, with most users viewing around 20–30 screens.
 
-* In order to make a model that is valid in the future. We need to a set a time limit after which we can look if that customer enrolled or not. We will take that threshold by taking a reasonable time that involves the majority of the customers who enrolled in the membership.
+minigame reveals that the majority of users did not play the mini game.
 
-* To calculate the time taken for each customer to response, we will subtract the enrollement time from the first open time.
+used_premium_feature suggests most users did not try premium features.
 
-We will take the time threshold at 48 hours (2 days). After that, the customer will be considered unrolled as we will check the model's performance after 2 days of operating it.
+liked shows fewer users liked the app on the store.
 
+Correlation with Target Variable
+<img src='README-Docs/correaltion-target.jpg' width='800' height='400'>
 
-## Screens
+Feature relationships with enrollment:
 
-* We want to divide the `screen_list` into separated columns each correspond to a specific type of the screens (saving, loans, credit, other)
+dayofweek has minimal impact due to its balanced distribution.
 
-* We have a separate .csv file ('top_screens.csv') that contains the top and most-viewed screens.
+hour has a negative correlation, meaning earlier usage times slightly increase enrollment likelihood.
 
-## Results
+age shows younger users tend to subscribe more often.
 
-Using `LogisticRegression` class from, we achieved 77% accuracy.
+numscreens has a positive correlation — higher engagement leads to higher enrollment probability.
+
+minigame participation slightly increases subscription chances.
+
+used_premium_feature unexpectedly shows a decrease in enrollment probability.
+
+liked also slightly decreases enrollment, though the correlation is very small.
+
+Correlation Matrix
+<img src='README-Docs/correaltion-matrix.png' width='800' height='600'>
+
+Insights:
+
+No pair of features shows a correlation greater than ±0.1.
+
+The strongest relationship appears between minigame and used_premium_feature.
+
+Since there are no strong linear dependencies, feature removal is unnecessary.
+
+Feature Engineering
+Response Time
+
+To ensure the model remains useful for future predictions, we define a time window after the first app usage to determine whether a user enrolls.
+
+Response time is calculated by subtracting the first open timestamp from the enrollment timestamp.
+
+<img src='README-Docs/response-time.png' width='1000' height='500'>
+
+We set a threshold of 48 hours (2 days). Users who do not subscribe within this period are treated as non-enrolled for model evaluation.
+
+Screen List Processing
+
+The screen_list feature contains multiple screens visited by users in one column.
+
+We convert this list into separate screen-based features grouped into categories such as savings, loans, credit, and others.
+
+A supporting file (top_screens.csv) is used to identify the most commonly visited screens.
+
+Results
+
+Using the Logistic Regression model, we achieved an accuracy of approximately 77% in predicting user enrollment behavior.
