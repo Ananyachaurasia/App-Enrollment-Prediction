@@ -39,7 +39,7 @@ The dataset contains **50,000 user records** with **12 features**, including the
 
 ## Histograms
 
-<img src='histograms-uni.jpg' width='800' height='600'>
+<img src='histograms.jpg' width='800' height='600'>
 
 ### Key Observations
 
@@ -55,7 +55,7 @@ The dataset contains **50,000 user records** with **12 features**, including the
 
 ## Correlation with Target Variable
 
-<img src='correaltion-target.jpg' width='800' height='400'>
+<img src='correaltionplot.jpg' width='800' height='400'>
 
 ### Feature Relationships with Enrollment
 
@@ -89,7 +89,7 @@ To ensure the model remains useful for future predictions, we define a time wind
 
 Response time is calculated by subtracting the first open timestamp from the enrollment timestamp.
 
-<img src='response-time.png' width='1000' height='500'>
+<img src='time.png' width='1000' height='500'>
 
 We set a threshold of **48 hours (2 days)**. Users who do not subscribe within this period are treated as non-enrolled for model evaluation.
 
