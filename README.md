@@ -1,7 +1,6 @@
 #  FineTech – App Enrollment Prediction using Machine Learning
 
-FineTech is an AI-powered Machine Learning web application designed to predict the probability of a user enrolling in a financial technology app.  
-By analyzing user demographics, financial account details, and app interaction behavior, FineTech provides actionable insights for improving customer engagement and enrollment strategies.
+FineTech is an advanced AI-driven Machine Learning web application built to predict the likelihood of a user enrolling in a financial technology platform. By intelligently analyzing a combination of demographic attributes, financial account indicators, and in-app behavioral interactions, FineTech generates accurate enrollment probability scores. This enables businesses to gain deeper user insights, optimize engagement strategies, and make data-informed decisions to improve customer acquisition and retention.
 
 ---
 
@@ -18,7 +17,6 @@ The system outputs:
 
 ✅ Enrollment likelihood  
 ✅ Probability score  
-✅ Decision-support recommendation  
 
 ---
 
@@ -54,12 +52,13 @@ The system outputs:
 ## Programming & ML
 - Python  
 - Pandas, NumPy  
-- Scikit-learn  
+- Scikit-learn
+- Matplotlib
 
 ## Web Development
 - Flask  
-- HTML5, CSS3  
-- Bootstrap  
+- HTML5 
+- CSS3 
 
 ## Model Deployment
 - Flask Web Application Integration  
