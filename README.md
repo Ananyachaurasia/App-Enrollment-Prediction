@@ -31,7 +31,7 @@ The system outputs:
 
 ---
 
-# 🖼️ Project Screenshots
+# Project Screenshots
 
 ## Landing Page
 ![Landing Page](home.png)
