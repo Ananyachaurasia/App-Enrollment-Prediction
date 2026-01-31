@@ -1,109 +1,97 @@
-# Guiding Customers Through App Behavior Analysis
+#  FineTech – App Enrollment Prediction using Machine Learning
 
-## Introduction
-
-In today’s competitive market, many companies offer free features in their mobile applications for a limited period to encourage users to eventually purchase a **premium subscription**.
-
-To maximize conversions, businesses should focus their marketing efforts on users who have already tried the app but have not yet subscribed. Offering discounts to this group is more effective than targeting users who are already likely to enroll.
-
-In this project, we build a **machine learning model** that predicts which users are unlikely to subscribe to the paid plan, allowing companies to better allocate promotional resources.
+FineTech is an AI-powered Machine Learning web application designed to predict the probability of a user enrolling in a financial technology app.  
+By analyzing user demographics, financial account details, and app interaction behavior, FineTech provides actionable insights for improving customer engagement and enrollment strategies.
 
 ---
 
-## Dataset
+#  Project Overview
 
-The dataset used in this project comes from a fintech company offering a paid mobile subscription that helps users manage and track their financial activities in one platform.
+FineTech helps financial platforms understand user intent by evaluating:
 
-The company provides a free version with limited functionality and wants to identify users who are less likely to upgrade, so special offers can be directed toward them instead of all customers.
+- User profile attributes (age, time of app usage)
+- Financial product ownership (savings, credit cards, loans)
+- In-app engagement patterns (screens viewed, premium usage)
+- Advanced screen navigation behavior
 
-The dataset contains **50,000 user records** with **12 features**, including the target variable representing enrollment status.
+The system outputs:
 
-### Dataset Features
-
-- **user**: Unique user identifier  
-- **first_open**: Timestamp of the user’s first app launch  
-- **dayofweek**: Day index when the app was first opened  
-- **hour**: Hour of the first app session  
-- **age**: Age of the user  
-- **screen_list**: List of screens visited during app usage  
-- **numscreens**: Total number of screens viewed  
-- **minigame**: Whether the user played the mini game (1 = Yes, 0 = No)  
-- **liked**: Whether the user liked the app on the store  
-- **used_premium_feature**: Whether premium features were accessed  
-- **enrolled**: Target variable indicating subscription (1 = Enrolled, 0 = Not Enrolled)  
-- **enrolled_date**: Date when the user enrolled in the paid subscription  
-
+✅ Enrollment likelihood  
+✅ Probability score  
+✅ Decision-support recommendation  
 
 ---
 
-## Histograms
+#  Key Highlights
 
-<img src='histograms.jpg.png' width='800' height='600'>
-
-### Key Observations
-
-- **dayofweek** shows an almost uniform distribution across all days.  
-- **hour** drops significantly between **2 AM and 10 AM**, as most users are inactive during sleeping hours.  
-- **age** indicates most users fall between **20–40 years**, with peaks around **30 and 40**.  
-- **numscreens** is left-skewed, with most users viewing around **20–30 screens**.  
-- **minigame** reveals that the majority of users did not play the mini game.  
-- **used_premium_feature** suggests most users did not try premium features.  
-- **liked** shows fewer users liked the app on the store.  
+-  **AI-Based Enrollment Prediction**
+-  **Comprehensive Financial & Behavioral Metrics**
+-  **Instant Real-Time Results**
+-  **Data-Driven Business Decision Support**
+-  **Modern Flask-Based Interactive UI**
+-  **Advanced Screen Interaction Tracking (Optional)**
 
 ---
 
-## Correlation with Target Variable
+# 🖼️ Project Screenshots
 
-<img src='correlationplot.jpg.png' width='800' height='400'>
+## Landing Page
+![Landing Page](home.png)
 
-### Feature Relationships with Enrollment
+## User Input Dashboard
+![User Form](form.png)
 
-- **dayofweek** has minimal impact due to its balanced distribution.  
-- **hour** has a negative correlation, meaning earlier usage times slightly increase enrollment likelihood.  
-- **age** shows younger users tend to subscribe more often.  
-- **numscreens** has a positive correlation — higher engagement leads to higher enrollment probability.  
-- **minigame** participation slightly increases subscription chances.  
-- **used_premium_feature** unexpectedly shows a decrease in enrollment probability.  
-- **liked** also slightly decreases enrollment, though the correlation is very small.  
+##  Advanced Screen Interaction Selection
+![Advanced Interaction](advanced.png)
 
----
-
-## Correlation Matrix
-
-### Insights
-
-- No pair of features shows a correlation greater than **±0.1**.  
-- The strongest relationship appears between **minigame** and **used_premium_feature**.  
-- Since there are no strong linear dependencies, feature removal is unnecessary.  
+##  Prediction Result Output
+![Prediction Result](result.png)
 
 ---
 
-## Feature Engineering
+#  Tech Stack
 
-### Response Time
+## Programming & ML
+- Python  
+- Pandas, NumPy  
+- Scikit-learn  
 
-To ensure the model remains useful for future predictions, we define a time window after the first app usage to determine whether a user enrolls.
+## Web Development
+- Flask  
+- HTML5, CSS3  
+- Bootstrap  
 
-Response time is calculated by subtracting the first open timestamp from the enrollment timestamp.
+## Model Deployment
+- Flask Web Application Integration  
 
-<img src='time.jpg.png' width='1000' height='500'>
+---
 
-We set a threshold of **48 hours (2 days)**. Users who do not subscribe within this period are treated as non-enrolled for model evaluation.
+# Dataset Description
+
+The dataset contains user app behavior and financial activity information such as:
+
+- Age  
+- Day of Week & Hour of App Usage  
+- Savings Account Count  
+- Credit Card & Loan Count  
+- Total Screens Viewed  
+- Premium Feature Usage  
+- User Feedback (Liked App / Played Minigame)  
+- Detailed Screen Interaction History  
 
 ---
 
-### Screen List Processing
+#  Machine Learning Pipeline
 
-The **screen_list** feature contains multiple screens visited by users in one column.
-
-We convert this list into separate screen-based features grouped into categories such as:
-
-- **Savings**
-- **Loans**
-- **Credit**
-- **Other Screens**
+1. Data Cleaning & Preprocessing  
+2. Feature Engineering & Encoding  
+3. Train-Test Split  
+4. Model Training & Evaluation  
+5. Probability Score Prediction  
+6. Deployment via Flask Web Interface  
 
 ---
+
 
 ## Results
 
